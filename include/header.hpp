@@ -13,8 +13,8 @@ class Filesystem {
   explicit Filesystem(const std::string path_to_file);
   void all_path(boost::filesystem::path p, std::ostream &out);
   bool handler(boost::filesystem::path p, std::ostream &out);
-  bool check_fiilename(boost::filesystem::path p);
-  std::string what_account(std::string p);
+  bool check_filename(boost::filesystem::path p);
+  std::string what_account(std::string a);
   std::string what_data(std::string p);
   std::string what_broker(boost::filesystem::path p);
   void show_account(std::ostream &out);
@@ -29,9 +29,10 @@ class Filesystem {
   std::vector<int64_t> _files;
   std::vector<int64_t> _lastdate;
 
-  const size_t len_namefile = 29;
+  const size_t len_filename = 29;
   const std::string _numbers = "0123456789";
 };
+
 
 #endif  //  INCLUDE_HEADER_HPP_
 

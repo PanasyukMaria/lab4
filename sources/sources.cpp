@@ -5,7 +5,7 @@
 #include <algorithm>
 
 Filesystem::Filesystem(const std::string path_to_file){
-  _path_to_ftp = boost::filesystem::path(path_to_file);
+ _path_to_ftp = boost::filesystem::path(path_to_file);
   std::cout << _path_to_ftp << std::endl;
   if (is_symlink(_path_to_ftp))
     _path_to_ftp = read_symlink(_path_to_ftp);
@@ -24,7 +24,7 @@ void Filesystem::all_path(boost::filesystem::path p, std::ostream &out) {
 }
 
 bool Filesystem::handler(boost::filesystem::path p, std::ostream &out) {
-  if (check_fiilename(p)) {
+  if (check_filename(p)) {
     std::string file_name = p.filename().string();
     std::string account = what_account(file_name);
     std::string data = what_data(file_name);
@@ -40,28 +40,29 @@ bool Filesystem::handler(boost::filesystem::path p, std::ostream &out) {
   }
 }
 
-bool Filesystem::check_fiilename(boost::filesystem::path p){
+bool Filesystem::check_filename(boost::filesystem::path p){
   const std::string _txt = ".txt";
   const std::string _balance = "balance";
 
-  if (p.extension() == _txt && p.filename().size() == len_namefile &&
+  if (p.extension() == _txt && p.filename().size() == len_filename &&
       p.filename().string().substr(0, 7) == _balance)
     return true;
   else
     return false;
 }
 
-std::string Filesystem::what_account(std::string p){
-  std::size_t iterator1 = p.find_first_of('_', 0);
-  if (iterator1 == std::string::npos)  return std::string();
+std::string Filesystem::what_account(std::string a){
+  std::size_t iterator1 = a.find_first_of('_', 0);
+  if (iterator1 == std::string::npos) return std::string();
+
   ++iterator1;
-  std::size_t iterator2 = p.find_last_of('_');
+  std::size_t iterator2 = a.find_last_of('_');
+
   if (iterator2 == std::string::npos) return std::string();
-  std::string account = p.substr(iterator1, iterator2-iterator1);
 
-  if (account.find_first_not_of(_numbers, 0) != std::string::npos)
-    return std::string();
+  std::string account = a.substr(iterator1, iterator2-iterator1);
 
+  if (account.find_first_not_of(_numbers, 0) != std::string::npos) return std::string();
   return account;
 }
 
@@ -97,8 +98,7 @@ void Filesystem::insert_element(std::string account, std::string data,
   std::vector<std::string>::iterator it = std::find(_account.begin(),
                                                     _account.end(),
                                                     account);
-  std::vector<std::string>::difference_type index = std::distance
-      (_account.begin(), it);
+  std::vector<std::string>::difference_type index = std::distance (_account.begin(), it);
   if (_account.size() == static_cast<size_t>(index)) {
     _account.push_back(account);
     _broker.push_back(broker);

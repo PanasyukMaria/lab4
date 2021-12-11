@@ -4,7 +4,7 @@
 
 int main() {
   // path  менять в зависимости от системы
-  std::string path("/home/enigma/twinLabs/c++ developer/lab 4/lab-04-boost-filesystem/misc/ftp");
+  std::string path("/home/morgan/Documents/lab/lab4/misc/ftp/");
   Filesystem test(path);
   std::cout << test;
 }

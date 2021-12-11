@@ -2,9 +2,6 @@
 
 #include <gtest/gtest.h>
 #include "header.hpp"
-TEST(Example, EmptyTest) {
-  EXPECT_TRUE(true);
-}
 
 TEST(Programm, WorkTest) {
   try {
