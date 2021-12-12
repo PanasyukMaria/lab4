@@ -11,3 +11,7 @@ TEST(Programm, WorkTest) {
   }
   EXPECT_TRUE(true);
 }
+
+TEST(Prog,empty) {
+  EXPECT_TRUE(true);
+}
