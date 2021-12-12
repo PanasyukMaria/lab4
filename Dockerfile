@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:21.04
 LABEL version="0.1"
 LABEL maintainer="rusdevops@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive

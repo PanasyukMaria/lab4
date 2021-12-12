@@ -1,3 +1,4 @@
+//Copyright by MaryMorgan
 
 #include "header.hpp"
 #include <iostream>
@@ -61,7 +62,8 @@ std::string Filesystem::what_account(std::string a){
 
   std::string account = a.substr(iterator1, iterator2-iterator1);
 
-  if (account.find_first_not_of(_numbers, 0) != std::string::npos) return std::string();
+  if (account.find_first_not_of(_numbers, 0) != std::string::npos)
+    return std::string();
   return account;
 }
 
